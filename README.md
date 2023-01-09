@@ -115,7 +115,7 @@
 
 ---
   
-# 3.<a name="3">데이터 전처리</a>
+# 3.<a name="3">데이터 전처리 및 후처리</a>
 ### 3-1. Audio Fragmentation : 너무나 큰 원본데이터를 학습에 용이하게 분리시키는 과정
   - 용량이 큰 음성 파일을 시작점과 끝점을 기준으로 분리시켜 Input size를 축소
   - 대부분의 음성 파일이 균등한 길이(약 10초)로 나뉘어져 효율적인 학습 가능
@@ -130,6 +130,24 @@
   - 데이터 수와 학습 시간이 충분히 확보되지 않을 때에는 잡음 제거 방식이 효과적
   
 <div><img width="300px" height="300px" src="https://user-images.githubusercontent.com/79880476/209461566-019c3a60-2430-40c6-9bad-1136f3072cae.jpg"</div>
+
+
+<br>
+<br>
+  
+### 3-3. 종결어미에 문장 부호 추가
+  - STT의 결과는 문장부호 미출력 → 인위적인 마침표 추가 필요
+  - KoNLPy의 Kkma 라이브러리 이용, 종결어미 확인
+  - 통계적 기법으로 종결어미(Ending Final) 추출하여 마침표 추가
+  
+  <div><img width="400px" height="100px" src="https://user-images.githubusercontent.com/83712521/211300041-2961696e-75b9-4328-bf11-4fc9e606eb46.png"</div>
+  
+<br>
+<br>
+  
+### 3-4. 맞춤법 교정
+  - 부정확한 발음으로 모델이 잘못 예측한 단어 교정 필요
+  - 네이버 맞춤법 검사기(spell checker) 사용 맞춤법 교정
 
 ---
   
